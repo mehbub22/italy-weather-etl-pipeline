@@ -1,0 +1,67 @@
+2026-07-17 17:47:24,657 - INFO - Pipeline started
+2026-07-17 17:47:24,657 - INFO - Step 1: Extracting weather data...
+2026-07-17 17:47:24,920 - INFO - Step 2: Transforming weather data...
+2026-07-17 17:47:24,947 - INFO - Step 3: Loading data into SQLite...
+2026-07-17 17:47:24,985 - INFO - Pipeline completed successfully.
+2026-07-17 17:53:24,809 - INFO - Pipeline started
+2026-07-17 17:53:24,809 - INFO - Step 1: Extracting weather data...
+2026-07-17 17:53:24,810 - INFO - Starting weather data extraction
+2026-07-17 17:53:24,810 - INFO - Sending request to Open-Meteo API for city: Messina
+2026-07-17 17:53:25,020 - INFO - Weather data received successfully from API
+2026-07-17 17:53:25,024 - INFO - Raw weather data saved to: data/raw/messina_weather_raw_20260717_175325.json
+2026-07-17 17:53:25,026 - INFO - Step 2: Transforming weather data...
+2026-07-17 17:53:25,042 - INFO - Step 3: Loading data into SQLite...
+2026-07-17 17:53:25,072 - INFO - Pipeline completed successfully.
+2026-07-17 17:56:36,605 - INFO - Pipeline started
+2026-07-17 17:56:36,606 - INFO - Step 1: Extracting weather data...
+2026-07-17 17:56:36,606 - INFO - Starting weather data extraction
+2026-07-17 17:56:36,606 - INFO - Sending request to Open-Meteo API for city: Messina
+2026-07-17 17:56:36,819 - INFO - Weather data received successfully from API
+2026-07-17 17:56:36,820 - INFO - Raw weather data saved to: data/raw/messina_weather_raw_20260717_175636.json
+2026-07-17 17:56:36,821 - INFO - Step 2: Transforming weather data...
+2026-07-17 17:56:36,821 - INFO - Starting weather data transformation
+2026-07-17 17:56:36,822 - INFO - Latest raw file found: data/raw\messina_weather_raw_20260717_175636.json
+2026-07-17 17:56:36,825 - INFO - Weather data transformed successfully with 168 rows
+2026-07-17 17:56:36,830 - INFO - Processed weather data saved to: data/processed/messina_hourly_weather.csv
+2026-07-17 17:56:36,830 - INFO - Step 3: Loading data into SQLite...
+2026-07-17 17:56:36,863 - INFO - Pipeline completed successfully.
+2026-07-17 18:00:42,854 - INFO - Pipeline started
+2026-07-17 18:00:42,855 - INFO - Step 1: Extracting weather data...
+2026-07-17 18:00:42,855 - INFO - Starting weather data extraction
+2026-07-17 18:00:42,855 - INFO - Sending request to Open-Meteo API for city: Messina
+2026-07-17 18:00:43,080 - INFO - Weather data received successfully from API
+2026-07-17 18:00:43,081 - INFO - Raw weather data saved to: data/raw/messina_weather_raw_20260717_180043.json
+2026-07-17 18:00:43,082 - INFO - Step 2: Transforming weather data...
+2026-07-17 18:00:43,082 - INFO - Starting weather data transformation
+2026-07-17 18:00:43,083 - INFO - Latest raw file found: data/raw\messina_weather_raw_20260717_180043.json
+2026-07-17 18:00:43,086 - INFO - Weather data transformed successfully with 168 rows
+2026-07-17 18:00:43,090 - INFO - Processed weather data saved to: data/processed/messina_hourly_weather.csv
+2026-07-17 18:00:43,090 - INFO - Step 3: Loading data into SQLite...
+2026-07-17 18:00:43,263 - INFO - Pipeline completed successfully.
+2026-07-17 18:05:52,965 - INFO - Pipeline started
+2026-07-17 18:05:52,965 - INFO - Step 1: Extracting weather data...
+2026-07-17 18:05:52,965 - INFO - Starting weather data extraction
+2026-07-17 18:05:52,966 - INFO - Sending request to Open-Meteo API for city: Messina
+2026-07-17 18:05:53,185 - INFO - Weather data received successfully from API
+2026-07-17 18:05:53,189 - INFO - Raw weather data saved to: data/raw/messina_weather_raw_20260717_180553.json
+2026-07-17 18:05:53,191 - INFO - Step 2: Transforming weather data...
+2026-07-17 18:05:53,191 - INFO - Starting weather data transformation
+2026-07-17 18:05:53,192 - INFO - Latest raw file found: data/raw\messina_weather_raw_20260717_180553.json
+2026-07-17 18:05:53,198 - INFO - Weather data transformed successfully with 168 rows
+2026-07-17 18:05:53,203 - INFO - Processed weather data saved to: data/processed/messina_hourly_weather.csv
+2026-07-17 18:05:53,203 - INFO - Step 3: Loading data into SQLite...
+2026-07-17 18:05:53,237 - INFO - Pipeline completed successfully.
+2026-07-17 18:09:39,358 - INFO - Pipeline started
+2026-07-17 18:09:39,358 - INFO - Step 1: Extracting weather data...
+2026-07-17 18:09:39,358 - INFO - Starting weather data extraction
+2026-07-17 18:09:39,358 - INFO - Sending request to Open-Meteo API for city: Messina
+2026-07-17 18:09:39,580 - INFO - Weather data received successfully from API
+2026-07-17 18:09:39,583 - INFO - Raw weather data saved to: data/raw/messina_weather_raw_20260717_180939.json
+2026-07-17 18:09:39,585 - INFO - Step 2: Transforming weather data...
+2026-07-17 18:09:39,585 - INFO - Starting weather data transformation
+2026-07-17 18:09:39,586 - INFO - Latest raw file found: data/raw\messina_weather_raw_20260717_180939.json
+2026-07-17 18:09:39,593 - INFO - Weather data transformed successfully with 168 rows
+2026-07-17 18:09:39,594 - INFO - Validation passed: required columns, timestamps, and duplicates check
+2026-07-17 18:09:39,597 - INFO - Processed weather data saved to: data/processed/messina_hourly_weather.csv
+2026-07-17 18:09:39,598 - INFO - Step 3: Loading data into SQLite...
+2026-07-17 18:09:39,631 - INFO - Pipeline completed successfully.

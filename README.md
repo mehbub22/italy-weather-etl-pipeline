@@ -1,78 +1,105 @@
 # Italy Weather ETL Pipeline
 
-This project is a beginner-friendly data engineering project.  
-It collects weather data for Messina, Italy from the Open-Meteo API, saves the raw data, transforms it into a clean table, loads it into SQLite, and exports a daily summary CSV file.
+A simple end-to-end ETL pipeline built in Python that fetches hourly weather data for Messina from the Open-Meteo API, transforms and validates it with pandas, and loads the cleaned data into SQLite for analysis. This project was created as a beginner-friendly data engineering portfolio project to demonstrate API ingestion, transformation, validation, logging, and database loading. [Open-Meteo](https://open-meteo.com/) provides the weather data used in this pipeline.
 
-## Project Goal
+## Project Overview
 
-The goal of this project is to practice the basic ETL process:
+The goal of this project is to build a small but structured ETL pipeline that simulates a real data engineering workflow.
 
-- Extract weather data from an API
-- Transform the raw JSON data into a structured table
-- Load the cleaned data into a SQLite database
-- Export a final summary file for analysis
+The pipeline does the following:
+- Extracts hourly weather data from the Open-Meteo API
+- Saves raw JSON files in the `data/raw/` folder
+- Transforms the raw JSON into a structured pandas DataFrame
+- Validates the transformed data
+- Saves the processed data as CSV
+- Loads the processed data into a SQLite database
+- Creates a summary mart table with daily weather metrics
+- Logs pipeline activity into a log file for debugging and monitoring
 
-This project is designed as a simple portfolio project for learning data engineering concepts using Python and SQL.
-
-## Tools Used
+## Tech Stack
 
 - Python
-- Pandas
+- pandas
+- requests
 - SQLite
-- Open-Meteo API
-- Git and GitHub
+- logging
 - VS Code
 
 ## Project Structure
 
-```text
+```bash
 italy-weather-etl-pipeline/
 │
-├── .gitignore
-├── README.md
-├── requirements.txt
 ├── data/
 │   ├── raw/
 │   ├── processed/
 │   └── weather.db
-├── output/
-│   └── daily_weather_summary.csv
+│
+├── logs/
+│   └── pipeline.log
+│
 ├── sql/
 │   ├── daily_summary.sql
 │   ├── extreme_days.sql
 │   └── windy_days.sql
-├── notebooks/
-└── src/
-    ├── config.py
-    ├── extract_weather.py
-    ├── transform_weather.py
-    ├── load_sqlite.py
-    ├── run_pipeline.py
-    └── export_summary.py
+│
+├── src/
+│   ├── config.py
+│   ├── logger.py
+│   ├── extract_weather.py
+│   ├── transform_weather.py
+│   ├── load_sqlite.py
+│   ├── export_summary.py
+│   └── run_pipeline.py
+│
+├── requirements.txt
+├── .gitignore
+└── README.md
 ```
 
-## How the Pipeline Works
+## Pipeline Flow
 
-The pipeline works in 5 main steps:
+1. `extract_weather.py` fetches hourly weather data from the Open-Meteo API and saves it as a timestamped raw JSON file.
+2. `transform_weather.py` reads the most recent raw JSON file and converts it into a structured CSV file.
+3. Validation checks are applied during transformation:
+   - DataFrame is not empty
+   - Required columns exist
+   - Timestamps are valid
+   - No duplicate timestamps exist
+4. `load_sqlite.py` loads the processed CSV into SQLite.
+5. A summary table called `mart_daily_weather_summary` is created for daily analytics.
+6. `run_pipeline.py` orchestrates the full ETL pipeline and logs each step.
 
-1. Extract weather data from the Open-Meteo API
-2. Save the raw response as a JSON file
-3. Transform the data into a clean CSV file
-4. Load the cleaned data into SQLite and create a daily summary table
-5. Export the final summary as a CSV file
+## Validation and Logging
 
-## Data Source
+This project includes basic data engineering improvements:
+- File and terminal logging using Python's `logging` module
+- Validation checks during transformation
+- Error handling for extraction, transformation, and loading
+- Clean ETL structure with separated modules
 
-This project uses the Open-Meteo API to collect hourly weather data for Messina, Italy.
+The log file is stored at:
 
-Main variables used:
-- temperature_2m
-- relative_humidity_2m
-- precipitation
-- wind_speed_10m
-- weather_code
+```bash
+logs/pipeline.log
+```
 
-## How to Run the Project
+## Example Output
+
+The final SQLite database contains:
+- `stg_hourly_weather` for hourly processed weather data
+- `mart_daily_weather_summary` for daily summary metrics
+
+Example daily summary columns:
+- `city`
+- `date`
+- `avg_temp`
+- `min_temp`
+- `max_temp`
+- `total_precipitation`
+- `max_wind_speed`
+
+## How to Run
 
 ### 1. Clone the repository
 
@@ -83,64 +110,60 @@ cd italy-weather-etl-pipeline
 
 ### 2. Create and activate a virtual environment
 
-On Windows:
+Windows:
 
 ```bash
 python -m venv venv
 venv\Scripts\activate
 ```
 
-### 3. Install the required packages
+### 3. Install dependencies
 
 ```bash
 pip install -r requirements.txt
 ```
 
-### 4. Run the full pipeline
+### 4. Run the pipeline
 
 ```bash
 python src/run_pipeline.py
 ```
 
-### 5. Export the final summary file
+## Sample Output Files
 
-```bash
-python src/export_summary.py
-```
-
-## Output
-
-The main output files are:
-
-- `data/processed/messina_hourly_weather.csv` → cleaned hourly weather data
-- `data/weather.db` → SQLite database
-- `output/daily_weather_summary.csv` → final exported daily summary
-
-## Example SQL Files
-
-This project also includes some SQL queries:
-
-- `daily_summary.sql` → creates daily aggregated weather data
-- `extreme_days.sql` → shows the hottest days
-- `windy_days.sql` → shows the windiest days
+After running the pipeline, you should see:
+- raw JSON files in `data/raw/`
+- processed CSV files in `data/processed/`
+- SQLite database in `data/weather.db`
+- logs in `logs/pipeline.log`
 
 ## What I Learned
 
 Through this project, I practiced:
-
-- Working with APIs
-- Handling JSON data in Python
-- Transforming data using Pandas
-- Loading data into SQLite
-- Writing SQL queries
-- Using Git and GitHub for project version control
+- working with an external API
+- building a multi-step ETL pipeline
+- transforming JSON data into tabular format
+- validating data before loading
+- loading data into SQLite
+- using logging for debugging and monitoring
+- structuring a Python project for GitHub
 
 ## Future Improvements
 
-Possible future improvements for this project:
+Possible next improvements:
+- support multiple Italian cities
+- add retry logic for failed API requests
+- make the pipeline safe for repeated runs without duplicates
+- move from SQLite to PostgreSQL
+- schedule the pipeline with cron or Airflow
+- create a dashboard for visualizing daily weather summaries
 
-- Add more Italian cities such as Palermo and Rome
-- Replace SQLite with PostgreSQL
-- Add data visualization charts
-- Automate the pipeline with scheduling
-- Build a dashboard for weather insights
+## Data Source
+
+Weather data is provided by the [Open-Meteo API](https://open-meteo.com/).
+
+## Author
+
+**Mehbub22**
+
+Data Analytics student interested in Data Engineering, Machine Learning, and analytics projects.
